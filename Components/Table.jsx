@@ -9,9 +9,9 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     
     return dataTime;
   };
- 
 
-  //console.log(allShipmentsdata);
+  console.log("All Shipments Data:", allShipmentsdata);
+
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8 mt-8-"> 
       <div className="items-start justify-between md:flex">
@@ -23,7 +23,6 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
             To add a shipment click on schedule shipment.
           </p>
         </div>
-        
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto"> 
         <table className="w-full table-auto text-sm text-left">
