@@ -119,8 +119,9 @@ export const TrackingProvider = ({ children }) => {
         method: "eth_accounts",
       });
 
-      const provider = new ethers.providers.JsonRpcProvider();
-
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
       const contract = fetchContract(provider);
 
       const shipment = await contract.getShipment(accounts[0], index * 1);
