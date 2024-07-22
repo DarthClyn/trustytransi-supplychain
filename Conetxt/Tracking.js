@@ -47,7 +47,9 @@ export const TrackingProvider = ({ children }) => {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
-      const contract = fetchContract(provider);
+      const signer = provider.getSigner();
+      const contract = fetchContract(signer);
+      
       const shipments = await contract.getAllTransactions();
 
       const allShipments = shipments.map((shipment) => ({
@@ -98,6 +100,9 @@ export const TrackingProvider = ({ children }) => {
       const provider = new ethers.providers.Web3Provider(connection);
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
+
+
+      
       const shipment = await contract.completeShipment(
         accounts[0],
         receiver,
@@ -122,7 +127,8 @@ export const TrackingProvider = ({ children }) => {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
-      const contract = fetchContract(provider);
+      const signer = provider.getSigner();
+      const contract = fetchContract(signer);
 
       const shipment = await contract.getShipment(accounts[0], index * 1);
       const SingleShipment = {
